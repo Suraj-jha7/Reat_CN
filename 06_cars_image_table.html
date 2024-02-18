@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+</head>
+<body>
+    <div id="root">hfal  uooagoao</div>
+    
+    <!-- <img src="cars_image/1.jpg" alt=""> -->
+    <script type="text/babel">
+
+
+var obj=[
+            {name:"suraj",
+            roll_no:"01",
+            marks:"95"},
+            {name:"Mayank",
+            roll_no:"69",
+            marks:"96"},
+            {name:"Falak",
+            roll_no:"02",
+            marks:"65"}];
+
+        const Student_details=()=>{
+
+            return (
+                <>
+                <h1 >Student Details</h1>
+                
+                    <table border="2px">
+                        <tr>
+                       <th>Name</th> 
+                       <th>roll_no</th> 
+                       <th>Marks</th> 
+                       </tr>
+                       {
+                       obj.map((element)=>
+                       
+                        <tr>
+                        <td>{element.name}</td>
+                        <td>{element.roll_no}</td>
+                        <td>{element.marks}</td>
+                        </tr>
+                        
+                       )}
+                       
+                      
+                       
+                    
+                    </table>
+                    
+                
+               
+                </>
+            );
+
+        }
+        
+
+        var cars=[
+           {
+            Image:<img src="cars_image/1.jpg" alt="image" height="27px" width="100%" />,
+           "name":"lamborgini",
+           cost:"3.1cr"
+            } ,
+            {
+            Image:<img src="cars_image/2.jpg" alt="image" height="27px" width="100%" />,
+           "name":"mercedez",
+           cost:"2.1cr"
+            } ,
+            {
+            Image:<img src="cars_image/3.jpg" alt="image" height="27px" width="100%" />,
+           "name":"audi",
+           cost:"3.1cr"
+            } ,
+            {
+            Image:<img src="cars_image/4.jpg" alt="image" height="27px" width="100%" />,
+           "name":"jaguar",
+           cost:"1.1cr"
+            } 
+    ]
+    
+    const Cars_image=()=>{
+        return (
+            <>
+            
+            <h1>Cars Details</h1>
+           <table border="2px">
+            <thead>
+                 <tr>
+                    <th>Image</th>
+                    <th>Company</th>
+                    <th>cost</th>
+                    </tr>
+
+                </thead>
+
+                {
+                    cars.map((c)=>(
+                        <tr>
+                            <td>
+                           {c.Image}
+                            </td>
+                            <td>
+                            {c.name}
+                            </td>
+                            <td>
+                            {c.cost}
+                            </td>
+                            
+
+                        </tr>
+                    ))
+                }
+            </table>
+            </>
+        )
+    }
+
+
+    //................................BELOW IS CONDITIONAL RENDERING.........................................................
+    const App=()=>{
+        var a=10;
+        var cars=false;
+        if(cars)
+        {
+            return <Cars_image/>
+        }
+        return <>
+
+        
+        <Student_details/>
+
+        </>
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App/>)
+    </script>
+
+
+    
+</body>
+</html>

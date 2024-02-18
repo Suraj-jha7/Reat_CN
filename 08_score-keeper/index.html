@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+       <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+   <div id="root" style="text-align: center;"></div> 
+   <script type="text/babel">
+    var score=0;
+    var wicket=0;
+    let BallwiseResult= [];
+    let hit;
+    let inputRef=React.createRef();
+
+    const addOne= (num)=>{
+
+       hit=num;
+       
+        rootElement.render(<App/>);
+        
+    }
+
+    const wickett=()=>{
+        hit="W";
+        if(wicket>10)
+        {
+        wicket=0;
+        score=0;
+        }
+        console.log(BallwiseResult);
+        rootElement.render(<App/>);
+    }
+
+    const reset=()=>{
+        wicket=0;
+        score=0;
+        BallwiseResult=[];
+        rootElement.render(<App/>);
+    }
+
+    const ScoreButton = () => (
+        
+    <div>
+        <button onClick={()=>{addOne(1)}}>1</button>
+        <button onClick={()=>{addOne(2)}}>2</button>
+        <button onClick={()=>{addOne(3)}}>3</button>
+        <button onClick={()=>{addOne(4)}}>4</button>
+        <button onClick={()=>{addOne(5)}}>5</button>
+        <button onClick={()=>{addOne(6)}}>6</button>
+        <button onClick={()=>{wickett()}}>Out</button>
+        <br/>
+        <button onClick={reset}>Reset</button>
+     </div>
+        
+        
+    )
+
+    // const Result = ()=>(
+    //     BallwiseResult.map((res,index)=>
+    //     (
+    //        <>
+    //             {console.log("index is ",index)}
+    //             {index % 6===0 ? <br/> : null}
+    //             <span key={index}  style={{color: "red"}}><strong>{res} </strong></span>
+    //        </>
+                
+    //         ))
+    // )
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        // BallwiseResult.unshift(<span>{hit}{","}{inputRef.current.value}</span>)
+         BallwiseResult.unshift(<span>{`${hit}  ${inputRef.current.value}`}</span>);
+        console.log("this is inputRef",inputRef);
+        if(hit!="W")
+        score+=hit;
+        else 
+        wicket+=1;
+        hit=0;
+        text="";
+        event.target[1].value="";
+        console.log([1], "this is target element")
+        console.log(BallwiseResult);
+        rootElement.render(<App/>);
+    }
+
+
+    var text;
+    // const commentHandler= ()=>{
+    //     text= event.target.value;}
+
+    // If we don't use ref then we have to make a whole funtion like above which is too much work if a lot of input field is there.
+    // <input onChange={commentHandler} placeholder="Add a Comment"/>
+    const Form = ()=>{
+
+        return <form onSubmit ={handleSubmit}>
+          <input  value={hit}/>  
+          
+          <input ref={inputRef} placeholder="Add a Comment"/>  
+          <button>Submit</button>
+        </form>
+    }
+    
+    
+    const App= ()=>{
+        return <>
+
+        <h1>Score Keeper </h1>
+        <h2> SCORE :{score}/{wicket}</h2>
+        <ScoreButton/>
+        <br/>
+        <Form/>
+        <hr/>
+        {
+        BallwiseResult.map((e,i)=>(
+           <p key={i}> {e}</p>
+        ))
+        }
+         </>
+    }
+
+
+    const rootElement=ReactDOM.createRoot(document.getElementById("root"))
+    rootElement.render(<App/>);
+   </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root">hellow............</div>
+
+    <script type="text/babel">
+
+
+
+
+        const App = ()=>{
+            var user;
+            if(user)
+            {
+                return <>
+                <h1>Hello {user}</h1>
+                </>
+            }
+            return <>
+            <h1>Hello user..</h1>
+            </>
+        }
+
+
+        const Test=()=>{
+
+            var user;
+           
+            return <>
+            <h1>Hello.... {user?user:"user"}</h1>
+            </>
+        }
+
+       
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<Test/>)
+    </script>
+
+
+    
+</body>
+</html>
